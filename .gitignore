@@ -1,0 +1,8 @@
+.idea/
+src/vendor/
+src/.env
+src/storage/logs/*.log
+src/storage/framework/cache/*
+src/storage/framework/sessions/*
+src/storage/framework/views/*
+src/bootstrap/cache/*.php
