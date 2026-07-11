@@ -6,3 +6,6 @@ src/storage/framework/cache/*
 src/storage/framework/sessions/*
 src/storage/framework/views/*
 src/bootstrap/cache/*.php
+src/.bash_history
+src/.lesshst
+src/.config/
