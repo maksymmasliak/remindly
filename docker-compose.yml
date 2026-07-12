@@ -23,12 +23,14 @@ services:
     image: mysql:8.0
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: remindly      # ← було crud
+      MYSQL_DATABASE: remindly
       MYSQL_USER: maks
       MYSQL_PASSWORD: secret
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
 
   redis:
     image: redis:alpine
