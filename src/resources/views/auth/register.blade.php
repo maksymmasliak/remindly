@@ -27,5 +27,6 @@
         <input type="password" name="password_confirmation" id="password_confirmation">
 
         <button type="submit">Зареєструватись</button>
+        <p>Already have an account? <a href="{{ route('login') }}">Login</a></p>
     </form>
 @endsection

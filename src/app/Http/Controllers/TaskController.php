@@ -7,6 +7,7 @@ use App\Http\Requests\StoreTaskRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Http\Requests\UpdateTaskRequest;
 
 class TaskController extends Controller
 {
@@ -59,7 +60,7 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreTaskRequest $request, Task $task): RedirectResponse
+    public function update(UpdateTaskRequest $request, Task $task): RedirectResponse
     {
         $this->authorize('update', $task);
         $task->update($request->validated());

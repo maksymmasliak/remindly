@@ -21,5 +21,6 @@
         <input type="password" name="password" id="password">
 
         <button type="submit">Увійти</button>
+        <p>Don't have an account? <a href="{{ route('register') }}">Register</a></p>
     </form>
 @endsection

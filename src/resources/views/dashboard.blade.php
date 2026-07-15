@@ -3,7 +3,7 @@
 @section('content')
     <h1>Welcome back, {{ auth()->user()->name }}!</h1>
 
-    <p>Your task list will appear here.</p>
+    <a href="{{ route('tasks.index') }}">View my tasks</a>
 
     @include('partials.logout-form')
 @endsection

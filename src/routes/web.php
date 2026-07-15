@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,3 +20,4 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth')->name('dashboard');
+Route::resource('tasks', TaskController::class)->middleware('auth');
