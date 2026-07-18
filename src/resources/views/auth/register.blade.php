@@ -1,32 +1,48 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Реєстрація</h1>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <h1>Create account</h1>
+            <p class="subtitle">Start organizing your tasks today.</p>
 
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+            @if ($errors->any())
+                <div class="alert alert--errors">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+            <form method="POST" action="{{ route('register.store') }}" class="form">
+                @csrf
 
-        <label for="name">Ім'я</label>
-        <input type="text" name="name" id="name" value="{{ old('name') }}">
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" value="{{ old('name') }}" autofocus>
+                </div>
 
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" value="{{ old('email') }}">
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" value="{{ old('email') }}">
+                </div>
 
-        <label for="password">Пароль</label>
-        <input type="password" name="password" id="password">
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                </div>
 
-        <label for="password_confirmation">Підтвердження пароля</label>
-        <input type="password" name="password_confirmation" id="password_confirmation">
+                <div class="field">
+                    <label for="password_confirmation">Confirm password</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation">
+                </div>
 
-        <button type="submit">Зареєструватись</button>
-        <p>Already have an account? <a href="{{ route('login') }}">Login</a></p>
-    </form>
+                <button type="submit" class="btn btn--primary">Register</button>
+            </form>
+
+            <p class="auth-footer">Already have an account? <a href="{{ route('login') }}">Login</a></p>
+        </div>
+    </div>
 @endsection

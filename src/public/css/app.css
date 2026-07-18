@@ -1,54 +1,400 @@
+/* ===== Design Tokens ===== */
+:root {
+    --color-bg: #f7f8fa;
+    --color-surface: #ffffff;
+    --color-border: #e2e5eb;
+    --color-text: #1a1d23;
+    --color-text-muted: #6b7280;
+    --color-primary: #4f46e5;
+    --color-primary-hover: #4338ca;
+    --color-danger: #dc2626;
+    --color-danger-bg: #fef2f2;
+    --color-success: #16a34a;
+    --color-success-bg: #f0fdf4;
+    --color-pending: #f59e0b;
+    --color-pending-bg: #fffbeb;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ===== Reset & Base ===== */
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: system-ui, sans-serif;
-    background: #f5f5f5;
-    color: #222;
-    max-width: 480px;
-    margin: 60px auto;
-    padding: 0 20px;
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Layout ===== */
+.page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 20px;
+}
+
+.page--narrow {
+    max-width: 420px;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.topbar__brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-text);
+}
+
+.topbar__nav {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+/* ===== Typography ===== */
 h1 {
-    font-size: 1.5rem;
-    margin-bottom: 16px;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
 }
 
-form {
+h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 12px;
+}
+
+.subtitle {
+    color: var(--color-text-muted);
+    margin: 0 0 32px;
+    font-size: 0.95rem;
+}
+
+/* ===== Card ===== */
+.card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 32px;
+}
+
+/* ===== Forms ===== */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.field input,
+.field textarea {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-text);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.field textarea {
+    min-height: 96px;
+    resize: vertical;
+}
+
+.field-checkbox {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.field-checkbox input {
+    width: 18px;
+    height: 18px;
+    padding: 0;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    text-decoration: none;
+}
+
+.btn--primary {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.btn--primary:hover {
+    background: var(--color-primary-hover);
+}
+
+.btn--secondary {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text);
+}
+
+.btn--secondary:hover {
+    background: var(--color-bg);
+}
+
+.btn--danger {
+    background: var(--color-danger-bg);
+    color: var(--color-danger);
+}
+
+.btn--danger:hover {
+    background: #fee2e2;
+}
+
+.btn--sm {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+.btn-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+/* ===== Alerts ===== */
+.alert {
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.alert--success {
+    background: var(--color-success-bg);
+    color: var(--color-success);
+    border: 1px solid #bbf7d0;
+}
+
+.alert--errors {
+    background: var(--color-danger-bg);
+    border: 1px solid #fecaca;
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin-bottom: 20px;
+}
+
+.alert--errors ul {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--color-danger);
+    font-size: 0.875rem;
+}
+
+.alert--errors li {
+    margin-bottom: 2px;
+}
+
+/* ===== Task List ===== */
+.task-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    background: #fff;
-    padding: 24px;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-label {
-    font-size: 0.9rem;
+.task-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.task-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.task-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.task-card__title {
+    font-size: 1.05rem;
     font-weight: 600;
+    margin: 0;
 }
 
-input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
+.task-card__meta {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    margin: 0 0 14px;
 }
 
-button {
-    padding: 10px;
-    background: #2563eb;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
+.task-card__actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
 }
 
-button:hover {
-    background: #1d4ed8;
+.task-card__actions form {
+    display: inline;
 }
 
-ul {
-    color: #dc2626;
-    font-size: 0.9rem;
+/* ===== Status Badge ===== */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge--pending {
+    background: var(--color-pending-bg);
+    color: var(--color-pending);
+}
+
+.badge--completed {
+    background: var(--color-success-bg);
+    color: var(--color-success);
+}
+
+/* ===== Empty State ===== */
+.empty-state {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--color-text-muted);
+}
+
+/* ===== Auth Pages ===== */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 40px 36px;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+/* ===== Welcome Page ===== */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+}
+
+.hero .btn-row {
+    justify-content: center;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+    .page {
+        padding: 24px 16px;
+    }
+
+    .card,
+    .auth-card {
+        padding: 24px 20px;
+    }
+
+    .task-card__header {
+        flex-direction: column;
+    }
 }

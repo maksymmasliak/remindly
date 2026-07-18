@@ -1,30 +1,46 @@
 @extends('layouts.app')
 
+@section('topbar')
+    <a href="{{ route('tasks.index') }}" class="btn btn--secondary btn--sm">Back to list</a>
+    @include('partials.logout-form')
+@endsection
+
 @section('content')
-    <h1>New task</h1>
+    <div class="page page--narrow">
+        <h1>New task</h1>
+        <p class="subtitle">Add something to your list.</p>
 
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+        @if ($errors->any())
+            <div class="alert alert--errors">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-    <form method="POST" action="{{ route('tasks.store') }}">
-        @csrf
+        <div class="card">
+            <form method="POST" action="{{ route('tasks.store') }}" class="form">
+                @csrf
 
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title" value="{{ old('title') }}">
+                <div class="field">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" value="{{ old('title') }}" autofocus>
+                </div>
 
-        <label for="description">Description</label>
-        <textarea name="description" id="description">{{ old('description') }}</textarea>
+                <div class="field">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description">{{ old('description') }}</textarea>
+                </div>
 
-        <label for="due_at">Due date</label>
-        <input type="datetime-local" name="due_at" id="due_at" value="{{ old('due_at') }}">
+                <div class="field">
+                    <label for="due_at">Due date</label>
+                    <input type="datetime-local" name="due_at" id="due_at" value="{{ old('due_at') }}">
+                </div>
 
-        <button type="submit">Create task</button>
-    </form>
-
-    <a href="{{ route('tasks.index') }}">Back to list</a>
+                <button type="submit" class="btn btn--primary">Create task</button>
+            </form>
+        </div>
+    </div>
 @endsection

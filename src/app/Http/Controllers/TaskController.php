@@ -36,7 +36,7 @@ class TaskController extends Controller
     public function store(StoreTaskRequest $request): RedirectResponse
     {
         $request->user()->tasks()->create($request->validated());
-        return redirect()->route('tasks.index')->with('success', 'Задачу успішно створено!');
+        return redirect()->route('tasks.index')->with('success', 'Task created successfully.');
     }
 
     /**
@@ -65,7 +65,7 @@ class TaskController extends Controller
         $this->authorize('update', $task);
         $task->update($request->validated());
 
-        return redirect()->route('tasks.index')->with('success', 'Задачу успішно оновлено!');
+        return redirect()->route('tasks.index')->with('success', 'Task updated successfully.');
     }
 
     /**
@@ -76,6 +76,6 @@ class TaskController extends Controller
         $this->authorize('delete', $task);
         $task->delete();
 
-        return redirect()->route('tasks.index')->with('success', 'Задачу успішно видалено!');
+        return redirect()->route('tasks.index')->with('success', 'Task deleted successfully.');
     }
 }

@@ -1,9 +1,11 @@
-<h2>Task reminder</h2>
+<h2>⏰ Reminder: {{ $task->title }}</h2>
 
-<p>Your task "{{ $task->title }}" is due soon.</p>
+<p>Just a heads up — this task is coming up soon.</p>
 
-<p>Due date: {{ $task->due_at->format('Y-m-d H:i') }}</p>
+<p><strong>Due:</strong> {{ $task->due_at->format('M d, Y — H:i') }}</p>
 
 @if ($task->description)
     <p>{{ $task->description }}</p>
 @endif
+
+<p>— Remindly</p>
