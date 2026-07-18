@@ -13,5 +13,8 @@ test:
 migrate:
 	docker compose exec app php artisan migrate
 
+fresh:
+	docker compose exec app php artisan migrate:fresh
+
 logs:
 	docker compose logs -f
