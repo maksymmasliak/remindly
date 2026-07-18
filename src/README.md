@@ -1,83 +1,58 @@
-# Remindly
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-Task management app with automated email reminders sent 15 minutes before due time. Built with Laravel, Docker (Nginx, PHP-FPM, MySQL, Redis), Queue workers, and Scheduler for background job processing.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-## Tech Stack
+## About Laravel
 
-- **Backend:** Laravel 13, PHP 8.3
-- **Database:** MySQL 8.0
-- **Cache & Queue:** Redis
-- **Web Server:** Nginx
-- **Process Manager:** Supervisor (manages PHP-FPM, cron-based Scheduler, and Queue Worker in a single container)
-- **Mail:** Gmail SMTP
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## Prerequisites
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-- Docker and Docker Compose installed
-- `make` (usually pre-installed on Linux/macOS)
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Getting Started
+## Learning Laravel
 
-1. Clone the repository:
-```bash
-   git clone git@github.com:maksymmasliak/remindly.git
-   cd remindly
-```
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-2. Create the `src` directory if it doesn't exist yet (avoids a Docker permissions issue on first run):
-```bash
-   mkdir -p src
-```
+In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-3. Copy the environment file and configure it:
-```bash
-   cp src/.env.example src/.env
-```
-Update `MAIL_USERNAME` and `MAIL_PASSWORD` with your own Gmail account and [App Password](https://myaccount.google.com/apppasswords) if you want email reminders to work.
+You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
 
-4. Build and start the containers:
-```bash
-   make up
-```
+## Agentic Development
 
-5. Install dependencies and generate the application key (first run only):
-```bash
-   make shell
-   composer install
-   php artisan key:generate
-   exit
-```
-
-6. Run migrations:
-```bash
-   make migrate
-```
-
-7. Visit the app:
-   http://localhost
-## Available Commands
-
-| Command | Description |
-|---|---|
-| `make up` | Start all containers |
-| `make down` | Stop all containers |
-| `make shell` | Open a bash shell inside the app container |
-| `make migrate` | Run database migrations |
-| `make fresh` | Drop all tables and re-run migrations |
-| `make test` | Run the test suite |
-| `make logs` | Follow logs from all containers |
-
-## Architecture
-
-The `app` container runs three processes simultaneously via Supervisor:
-- **PHP-FPM** — serves the application
-- **Scheduler loop** — runs `php artisan schedule:run` every 60 seconds, which checks for tasks due within 15 minutes
-- **Queue Worker** — processes the `SendTaskReminderJob` dispatched by the scheduler, sending reminder emails asynchronously via Redis
-
-## Testing
-
-The project includes Feature tests covering CRUD operations and security (IDOR protection, Mass Assignment, CSRF, Session Fixation):
+Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
 
 ```bash
-make test
+composer require laravel/boost --dev
+
+php artisan boost:install
 ```
+
+Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Code of Conduct
+
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
