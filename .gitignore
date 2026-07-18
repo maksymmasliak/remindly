@@ -9,3 +9,4 @@ src/bootstrap/cache/*.php
 src/.bash_history
 src/.lesshst
 src/.config/
+src/supervisord.pid
